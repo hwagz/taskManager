@@ -1,0 +1,41 @@
+
+<a class="col-xs-1" href="" ng-click="darkToggle()"><i class="fa fa-sun-o" aria-hidden="true"></i></a><span class="col-xs-11">&nbsp;</span>
+<input type="text" ng-model="newTask" ng-keydown="keyHandler($event)" class="col-xs-11">
+<button type="button" ng-click="addTask()" class="col-xs-1">+</button>
+<br>
+<br>
+<ul class="col-xs-6">
+  <li class="col-xs-12"><strong>Tasks</strong></li>
+  <li class="col-xs-12 taskContainer" ng-repeat="task in tasks">
+      <button type="button" class="Btn remove" ng-click="removeTask(tasks,task)">-</button>
+      <button type="button" class="Btn" ng-click="moveTask(task)">></button>
+      {{task}}
+  </li>
+</ul>
+
+<ul class="col-xs-6">
+  <li class="col-xs-12"><strong>Research</strong></li>
+  <li class="col-xs-12 taskContainer" ng-repeat="task in research">
+      <button type="button" class="Btn remove" ng-click="removeTask(research,task)">-</button>
+      <button type="button" class="Btn" ng-click="moveTask(task,true)"><</button>
+      {{task}}
+  </li>
+</ul>
+
+<ul class="col-xs-12" ng-show="false">
+  <li class="col-xs-12"><strong>Research</strong></li>
+  <li class="col-xs-12 taskContainer" ng-repeat="(key,value) in serversODD">
+      <!-- <button type="button" class="Btn remove" ng-click="removeTask(research,task)">-</button> -->
+      <!-- <button type="button" class="Btn" ng-click="moveTask(task,true)"><</button> -->
+      <!-- ENABLE -->
+      <span class="col-xs-12" ng-repeat="svcgrp in value" ng-show="true"><span ng-show="true">enable serviceGroup {{svcgrp[0]}} {{key}} {{svcgrp[1]}} </span><span ng-show="false">stat servicegroup {{svcgrp[0]}}</span></span>
+
+
+      <span class="col-xs-12" ng-repeat="svcgrp in value" ng-show="false"><span ng-show="true">disable serviceGroup {{svcgrp[0]}} {{key}} {{svcgrp[1]}} -delay 60 -graceFul YES</span> <span ng-show="false">stat servicegroup {{svcgrp[0]}}</span></span>
+      <!-- {{key}} {{value[0]}} -->
+      <!-- <br> -->
+      <!-- {{key}} {{value[1]}} -->
+      <!-- disable serviceGroup DBAoasiswatstFarm DBAwaapptst02 80 -delay 60 -graceFul YES -->
+      <!-- enable serviceGroup DBAoasiswatstFarm DBAwaapptst02 80 -->
+  </li>
+</ul>
